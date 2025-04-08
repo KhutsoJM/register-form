@@ -1,0 +1,30 @@
+body {
+    background: linear-gradient(to bottom, #F0F8FF, #8ef0f0);
+    background-repeat: no-repeat;
+    font-family: 'Roboto';
+}
+
+main {
+    background-color: white;
+}
+
+.form-step {
+    display: none;
+    /* transform-origin: top;
+    animation: animate .5s; */
+}
+
+.form-step-active {
+    display: block;
+}
+
+/* @keyframes animate {
+    from {
+        transform: scale(1, 0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+} */

@@ -14,11 +14,19 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    birthdate: {
+    nationality: {
         type: String,
         required: true,
     },
+    birthdate: {
+        type: String,
+        // required: true,
+    },
     address: {
+        type: String,
+        required: true,
+    },
+    callingCode: {
         type: String,
         required: true,
     },
@@ -26,12 +34,19 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    nationality: {
+        type: String,
+        required: true,
+    },
     gender: {
         type: String,
         enum: ['M', 'F', 'Other'],
+    },
+    enrolling: {
+        type: String,
         required: true,
     },
-    learner: [{
+    learners: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Learner',
     }]

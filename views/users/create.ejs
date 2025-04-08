@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <!-- Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Roboto Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+
+    <link rel="stylesheet" href="styles/style.css">
+
+    <title>Game Page</title>
+
+    <style>
+        /* [class*="col"] {
+            border: 1px solid black;
+        } */
+
+        /* .row {
+            border: 1px solid green;
+        } */
+    </style>
+</head>
+
+<body class="d-flex flex-column justify-content-center min-vh-100">
+    <main class="container rounded-3 p-3" style="max-height: 650px;;">
+        <div class="row mb-4">
+            <h1 class="text-center">Kids Innovate Africa</h1>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-5">
+                <img src="./images/Mobile login-bro.png" alt="" class="img-fluid rounded-pill">
+            </div>
+            <div class="col-md-5 px-5">
+                <form method="POST" action="/register">
+                    <!-- STEP 1 -->
+                    <div class="form-step form-step-active">
+                        <div class="input-group mb-3">
+                            <div class="form-floating">
+                                <input id="name" name="name" type="text" class="form-control" placeholder="name">
+                                <label for="name" class="form-label">Name</label>
+                            </div>
+                            <span class="input-group-text" id="name">
+                                <i class="bi bi-person-fill"></i>
+                            </span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input id="surname" name="surname" type="text" class="form-control" placeholder="surname">
+                            <label for="surname" class="form-label">Surname</label>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="form-floating">
+                                <input id="email" name="email" type="email" class="form-control"
+                                    placeholder="example@gmail.com">
+                                <label for="email" class="form-label">Email</label>
+                            </div>
+                            <span class="input-group-text" id="email">@</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="form-floating mb-3">
+                                    <select id="nationality" name="nationality" class="form-select"
+                                        aria-label="Nationality">
+                                        <option selected>Select an option</option>
+                                        <%for (let country of countries) { %>
+                                            <option>
+                                                <%=country.name%>
+                                            </option>
+                                            <% } %>
+                                    </select>
+                                    <label for="nationality">Nationality</label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-floating mb-3">
+                                    <select id="gender" name="gender" class="form-select" aria-label="gender">
+                                        <option selected>M</option>
+                                        <option>F</option>
+                                        <option>Other</option>
+                                    </select>
+                                    <label for="gender">Gender</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="form-floating">
+                                <input id="address" name="address" type="text" class="form-control"
+                                    placeholder="27 Redwood Drive">
+                                <label for="address" class="form-label">Address</label>
+                            </div>
+                            <span class="input-group-text">
+                                <i class="bi bi-house-door-fill" id="address"></i>
+                            </span>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-3">
+                                <div class="form-floating">
+                                    <select id="calling-code" name="callingCode" class="form-select" aria-label="Code">
+                                        <% for (let country of countries) {%>
+                                            <% if (country.callingCode==='+27' ) { %>
+                                                <option selected>
+                                                    <%= country.callingCode %>
+                                                </option>
+                                                <% } else { %>
+                                                    <option>
+                                                        <%= country.callingCode %>
+                                                    </option>
+                                                    <% } %>
+                                                        <% } %>
+                                    </select>
+                                    <label for="calling-code" class="form-label">Code</label>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <div class="input-group">
+                                    <div class="form-floating">
+                                        <input id="number" name="number" type="text" class="form-control w-100"
+                                            placeholder="Number">
+                                        <label for="number" class="form-label">Number</label>
+                                    </div>
+                                    <span class="input-group-text">
+                                        <i class="bi bi-telephone-fill"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="back-btn btn btn-primary mx-2 px-3 disabled">Back</button>
+                            <button type="button" class="next-btn btn btn-success px-3">Next</button>
+                        </div>
+                    </div>
+                    <!-- STEP 2 -->
+                    <div class="form-step">
+                        <div class="form-floating mb-3">
+                            <select id="Enrolling" name="Enrolling" class="form-select enrolling"
+                                aria-label="Enrolling">
+                                <option selected>How many kids are enrolling?</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <label for="Enrolling">Enrolling</label>
+                        </div>
+                        <div class="enrolling-inputs-container">
+                            <!-- <div class="row">
+                                <div class="col-md-5">
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input id="name" name="[learner][name]" type="text" class="form-control"
+                                                placeholder="name">
+                                            <label for="name" class="form-label">Name</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating mb-3">
+                                        <input id="surname" name="[learner][surname]" type="text" class="form-control"
+                                            placeholder="surname">
+                                        <label for="surname" class="form-label">Surname</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-floating mb-3">
+                                        <select id="gender" name="gender" class="form-select" aria-label="gender">
+                                            <option selected>M</option>
+                                            <option>F</option>
+                                            <option>Other</option>
+                                        </select>
+                                        <label for="gender">Gender</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input id="name" name="[learner][name]" type="text" class="form-control"
+                                                placeholder="name">
+                                            <label for="name" class="form-label">Name</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating mb-3">
+                                        <input id="surname" name="[learner][surname]" type="text" class="form-control"
+                                            placeholder="surname">
+                                        <label for="surname" class="form-label">Surname</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-floating mb-3">
+                                        <select id="gender" name="gender" class="form-select" aria-label="gender">
+                                            <option selected>M</option>
+                                            <option>F</option>
+                                            <option>Other</option>
+                                        </select>
+                                        <label for="gender">Gender</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input id="name" name="[learner][name]" type="text" class="form-control"
+                                                placeholder="name">
+                                            <label for="name" class="form-label">Name</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating mb-3">
+                                        <input id="surname" name="[learner][surname]" type="text" class="form-control"
+                                            placeholder="surname">
+                                        <label for="surname" class="form-label">Surname</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-floating mb-3">
+                                        <select id="gender" name="gender" class="form-select" aria-label="gender">
+                                            <option selected>M</option>
+                                            <option>F</option>
+                                            <option>Other</option>
+                                        </select>
+                                        <label for="gender">Gender</label>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="back-btn btn btn-primary mx-2 px-3">Back</button>
+                            <button type="button" class="next-btn btn btn-success px-3">Next</button>
+                        </div>
+                    </div>
+                    <!-- STEP 3 -->
+                    <div class="form-step">
+                        <div class="input-group mb-3">
+                            <div class="form-floating">
+                                <input type="text" id="datepicker" name="learners[birthdate]" class="form-control"
+                                    placeholder="birthdate">
+                                <label for="datepicker">Date of Birth</label>
+                            </div>
+                            <span class="input-group-text" id="name">
+                                <i class="bi bi-calendar-event"></i>
+                            </span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="form-floating">
+                                <select id="school" name="learners[school]" class="form-select school"
+                                    aria-label="school">
+                                    <option selected>Select an option</option>
+                                    <option>Sunningdale</option>
+                                    <option>Milnerton Primary School</option>
+                                    <option>Edgemead High School</option>
+                                    <option>Edgemead Primary School</option>
+                                    <option>Other</option>
+                                </select>
+                                <label for="school">School</label>
+                            </div>
+                            <span class="input-group-text" id="school">
+                                <i class="fa-solid fa-school-flag"></i>
+                            </span>
+                        </div>
+                        <div class="input-group mb-3 school-input d-none">
+                            <div class="form-floating">
+                                <input id="school-input" name="learners[school]" type="text" class="form-control"
+                                    placeholder="school-input">
+                                <label for="school-input" class="form-label">Enter the name of the school here</label>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="form-floating">
+                                <select id="venue" name="learners[venue]" class="form-select" aria-label="venue">
+                                    <option selected>Select an option</option>
+                                    <option>KIA Office</option>
+                                    <option>Zastron Studio (Milnerton)</option>
+                                    <option>Edgemead High School</option>
+                                    <option>Kensio House</option>
+                                </select>
+                                <label for="venue">Venue</label>
+                            </div>
+                            <span class="input-group-text" id="school">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea name="learners[note]" class="form-control" placeholder="Notes" id="notes"
+                                style="height: 200px; resize: none"></textarea>
+                            <label for="notes">Anything to take note of Jason (Allergies/Conditions/etc)</label>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="back-btn btn btn-primary mx-2 px-3">Back</button>
+                            <button type="submit" class="next-btn btn-success btn px-3">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="scripts/forms.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            flatpickr("#datepicker", {
+                dateFormat: "Y-m-d", // Custom format
+                // minDate: "today", // Prevent past dates
+                enableTime: false // Disable time selection
+            });
+        });
+    </script>
+
+</body>
+
+</html>
