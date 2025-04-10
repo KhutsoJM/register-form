@@ -1,11 +1,16 @@
 body {
-    background: linear-gradient(to bottom, #F0F8FF, #8ef0f0);
+    /* background: linear-gradient(to bottom, #F0F8FF, #8ef0f0); */
+    background: radial-gradient(circle, #48CAE4, #90E0EF, #ADE8F4, #CAF0F8);
     background-repeat: no-repeat;
     font-family: 'Roboto';
 }
 
 main {
     background-color: white;
+}
+
+h1 {
+    color: #0077B6;
 }
 
 .form-step {
@@ -15,6 +20,14 @@ main {
 }
 
 .form-step-active {
+    display: block;
+}
+
+.learner-form-step {
+    display: none;
+}
+
+.learner-form-step-active {
     display: block;
 }
 

@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const MONGO_URI = process.env.MONGO_URI;
 
-const response = await axios.get('https://restcountries.com/v3.1/all?fields=name,idd');
+const response = await axios.get('https://restcountries.com/v3.1/all?fields=demonyms,idd');
 const countries = response.data
 
 
@@ -25,7 +25,7 @@ const seedDB = async () => {
     await Country.deleteMany()
 
     for (let c of countries) {
-        const name = c.name.common
+        const name = c.demonyms.eng.f
         const callingCode = c.idd.root + c.idd.suffixes
 
         if (c.idd.root === '' || c.idd.suffixes.length > 1) {
