@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+    dotenv.config();
+}
+
 // PACKAGES
 import express from 'express'
 import mongoose from 'mongoose'
@@ -8,6 +12,13 @@ import { fileURLToPath } from 'url'
 
 dotenv.config()
 const app = express()
+
+// VALIDATION
+import Joi from 'joi'
+
+
+// SECURITY
+import helmet from 'helmet'
 
 
 // ENV
@@ -20,12 +31,19 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 
+
 // ROUTERS
 import userRoutes from './routes/users.js';
 
 
 // MIDDLEWARE
 app.use(express.urlencoded({ extended: true }));
+app.use(helmet())
+app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "script-src 'self' https://cdn.jsdelivr.net");
+    next();
+});
+
 
 // set ejs as the templating engine
 app.set('view engine', 'ejs')

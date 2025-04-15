@@ -6,6 +6,10 @@ const countrySchema = new Schema({
         type: String,
         required: true,
     },
+    demonym: {
+        type: String,
+        reqiured: true,
+    },
     callingCode: {
         type: String,
         required: true,

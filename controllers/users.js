@@ -19,6 +19,9 @@ export const submitForm = async (req, res) => {
         number,
         enrolling,
         nationality,
+        country,
+        city,
+        postalCode,
         learners,
     } = req.body;
     console.log(req.body)

@@ -14,7 +14,7 @@
 
     <!-- Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr" crossorigin="anonymous"></script>
 
     <!-- Roboto Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,70 +30,67 @@
     <link rel="stylesheet" href="styles/style.css">
 
     <title>Registration Page</title>
-
-    <style>
-        /* [class*="col"] {
-            border: 1px solid black;
-        } */
-
-        /* .row {
-            border: 1px solid green;
-        } */
-    </style>
 </head>
 
 <body class="d-flex flex-column justify-content-center min-vh-100">
-    <main class="container rounded-3 p-3" style="height: 650px;;">
+    <main class="container p-3 shadow-lg rounded-1" style="height: 650px;">
         <div class="row mb-4">
-            <h1 class="text-center">Kids Innovate Africa</h1>
+            <h1 class="text-center fw-bold">KIDS INNOVATE AFRICA</h1>
         </div>
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-5">
-                <img src="./images/Mobile login-bro.png" alt="" class="img-fluid rounded-pill">
-            </div>
-            <div class="col-md-5 px-5">
-                <form method="POST" action="/register">
+        <div class="row d-flex justify-content-center mb-3">
+            <section class="col-md-5 d-flex justify-content-center">
+                <img src="./images/robotics-kids.png" alt="" class="img-fluid circle rounded-circle"
+                    style="height: 424px; width: 424px; object-fit: cover;">
+            </section>
+            <section class="col-md-5 px-5">
+                <form method="POST" action="/register" autocomplete="off" novalidate>
                     <!-- STEP 1 -->
                     <div class="form-step form-step-active">
+                        <!-- Name -->
                         <div class="input-group mb-3">
                             <div class="form-floating">
-                                <input id="name" name="name" type="text" class="form-control" placeholder="name">
+                                <input id="name" name="name" type="text" class="form-control rounded-0"
+                                    placeholder="name" minLength="5">
                                 <label for="name" class="form-label">Name</label>
                             </div>
-                            <span class="input-group-text" id="name">
+                            <span class="input-group-text rounded-0" id="name">
                                 <i class="bi bi-person-fill"></i>
                             </span>
                         </div>
+                        <!-- Surname -->
                         <div class="form-floating mb-3">
-                            <input id="surname" name="surname" type="text" class="form-control" placeholder="surname">
+                            <input id="surname" name="surname" type="text" class="form-control rounded-0"
+                                placeholder="surname">
                             <label for="surname" class="form-label">Surname</label>
                         </div>
+                        <!-- Email -->
                         <div class="input-group mb-3">
                             <div class="form-floating">
-                                <input id="email" name="email" type="email" class="form-control"
+                                <input id="email" name="email" type="email" class="form-control rounded-0"
                                     placeholder="example@gmail.com">
                                 <label for="email" class="form-label">Email</label>
                             </div>
-                            <span class="input-group-text" id="email">@</span>
+                            <span class="input-group-text rounded-0" id="email">@</span>
                         </div>
+                        <!-- Birthdate and Gender row -->
                         <div class="row">
-                            <div class="col-9">
-                                <div class="form-floating mb-3">
-                                    <select id="nationality" name="nationality" class="form-select"
-                                        aria-label="Nationality">
-                                        <option selected>Select an option</option>
-                                        <%for (let country of countries) { %>
-                                            <option>
-                                                <%=country.name%>
-                                            </option>
-                                            <% } %>
-                                    </select>
-                                    <label for="nationality">Nationality</label>
+                            <!-- Birthdate -->
+                            <div class="col-8">
+                                <div class="input-group mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" id="datepicker" name="birthdate"
+                                            class="form-control datepicker rounded-0" placeholder="birthdate">
+                                        <label for="datepicker">Date of Birth</label>
+                                    </div>
+                                    <span class="input-group-text rounded-0" id="name">
+                                        <i class="bi bi-calendar-event"></i>
+                                    </span>
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <!-- Gender -->
+                            <div class="col-4">
                                 <div class="form-floating mb-3">
-                                    <select id="gender" name="gender" class="form-select" aria-label="gender">
+                                    <select id="gender" name="gender" class="form-select rounded-0" aria-label="gender">
                                         <option selected>M</option>
                                         <option>F</option>
                                         <option>Other</option>
@@ -102,20 +99,25 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <div class="form-floating">
-                                <input id="address" name="address" type="text" class="form-control"
-                                    placeholder="27 Redwood Drive">
-                                <label for="address" class="form-label">Address</label>
-                            </div>
-                            <span class="input-group-text">
-                                <i class="bi bi-house-door-fill" id="address"></i>
-                            </span>
+                        <div class="form-floating mb-3">
+                            <select id="nationality" name="nationality" class="form-select rounded-0"
+                                aria-label="Nationality">
+                                <option selected>Select an option</option>
+                                <%for (let country of countries) { %>
+                                    <option>
+                                        <%=country.demonym%>
+                                    </option>
+                                    <% } %>
+                            </select>
+                            <label for="nationality">Nationality</label>
                         </div>
+                        <!-- Calling Code and Number row -->
                         <div class="row mb-3">
-                            <div class="col-3">
+                            <!-- Callinig Code -->
+                            <div class="col-4">
                                 <div class="form-floating">
-                                    <select id="calling-code" name="callingCode" class="form-select" aria-label="Code">
+                                    <select id="calling-code" name="callingCode" class="form-select rounded-0"
+                                        aria-label="Code">
                                         <% for (let country of countries) {%>
                                             <% if (country.callingCode==='+27' ) { %>
                                                 <option selected>
@@ -131,28 +133,87 @@
                                     <label for="calling-code" class="form-label">Code</label>
                                 </div>
                             </div>
-                            <div class="col-9">
+                            <!-- Number -->
+                            <div class="col-8">
                                 <div class="input-group">
                                     <div class="form-floating">
-                                        <input id="number" name="number" type="text" class="form-control w-100"
-                                            placeholder="Number">
+                                        <input id="number" name="number" type="text"
+                                            class="form-control w-100 rounded-0" placeholder="Number">
                                         <label for="number" class="form-label">Number</label>
                                     </div>
-                                    <span class="input-group-text">
+                                    <span class="input-group-text rounded-0">
                                         <i class="bi bi-telephone-fill"></i>
                                     </span>
                                 </div>
                             </div>
                         </div>
+                        <!-- Back/Next Buttons -->
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="back-btn btn btn-primary mx-2 px-3 disabled">Back</button>
-                            <button type="button" class="next-btn btn btn-success px-3">Next</button>
+                            <button type="button"
+                                class="back-btn btn btn-outline-primary mx-2 px-3 rounded-5 disabled">Back</button>
+                            <button type="button" class="next-btn btn btn-outline-success px-3 rounded-5">Next</button>
                         </div>
                     </div>
                     <!-- STEP 2 -->
                     <div class="form-step">
+                        <!-- Country -->
                         <div class="form-floating mb-3">
-                            <select id="enrolling" name="enrolling" class="form-select enrolling-select"
+                            <select id="country" name="country" class="form-select rounded-0" aria-label="country">
+                                <option selected>Select an option</option>
+                                <%for (let country of countries) { %>
+                                    <option>
+                                        <%=country.name%>
+                                    </option>
+                                    <% } %>
+                            </select>
+                            <label for="country">Country</label>
+                        </div>
+                        <div class="row">
+                            <!-- City -->
+                            <div class="col-8">
+                                <div class="input-group mb-3">
+                                    <div class="form-floating">
+                                        <input id="city" name="city" type="text" class="form-control rounded-0"
+                                            placeholder="27 Redwood Drive">
+                                        <label for="city" class="form-label">City</label>
+                                    </div>
+                                    <span class="input-group-text rounded-0">
+                                        <i class="bi bi-building"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- Postal code -->
+                            <div class="col-4">
+                                <div class="form-floating mb-3">
+                                    <input id="postalCode" name="postalCode" type="text" class="form-control rounded-0"
+                                        placeholder="postalCode">
+                                    <label for="postalCode" class="form-label">Postal Code</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Address -->
+                        <div class="input-group mb-3">
+                            <div class="form-floating">
+                                <input id="address" name="address" type="text" class="form-control rounded-0"
+                                    placeholder="27 Redwood Drive">
+                                <label for="address" class="form-label">Address</label>
+                            </div>
+                            <span class="input-group-text rounded-0">
+                                <i class="bi bi-house-door-fill" id="address"></i>
+                            </span>
+                        </div>
+                        <!-- Back/Next Buttons -->
+                        <div class="d-flex justify-content-end">
+                            <button type="button"
+                                class="back-btn btn btn-outline-primary mx-2 px-3 rounded-5">Back</button>
+                            <button type="button" class="next-btn btn btn-outline-success px-3 rounded-5">Next</button>
+                        </div>
+                    </div>
+                    <!-- STEP 3 -->
+                    <div class="form-step">
+                        <!-- Enrolling -->
+                        <div class="form-floating mb-3">
+                            <select id="enrolling" name="enrolling" class="form-select enrolling-select rounded-0"
                                 aria-label="Enrolling">
                                 <option selected>How many kids are enrolling?</option>
                                 <option value="1">1</option>
@@ -249,12 +310,14 @@
                                 </div>
                             </div> -->
                         </div>
+                        <!-- Back/Next Buttons -->
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="back-btn btn btn-primary mx-2 px-3">Back</button>
-                            <button type="button" class="next-btn btn btn-success px-3">Next</button>
+                            <button type="button"
+                                class="back-btn btn btn-outline-primary mx-2 px-3 rounded-5">Back</button>
+                            <button type="button" class="next-btn btn btn-outline-success px-3 rounded-5">Next</button>
                         </div>
                     </div>
-                    <!-- STEP 3 -->
+                    <!-- STEP 4 -->
                     <div class="form-step">
                         <!-- Learner Form Step (Generated) -->
                         <div class="learners-form-steps-container">
@@ -330,13 +393,48 @@
                                 </div>
                             </div> -->
                         </div>
+                        <!-- Back/Next Buttons -->
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="back-btn btn btn-primary mx-2 px-3">Back</button>
-                            <button type="submit" class="next-btn btn-success btn px-3">Submit</button>
+                            <button type="button"
+                                class="back-btn btn btn-outline-primary mx-2 px-3 rounded-5">Back</button>
+                            <button type="button" class="modal-btn btn-outline-success btn px-3 rounded-5 register-btn"
+                                data-bs-toggle="modal" data-bs-target="#disclaimer-modal">Register</button>
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="disclaimer-modal" tabindex="-1" aria-labelledby="modal-title"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title text-center" id="modal-title">Disclaimer</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-labelledby="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae cumque vel
+                                        nostrum suscipit aspernatur
+                                        dolorem. Exercitationem quasi repellendus laborum, eligendi perferendis corrupti
+                                        animi reprehenderit ducimus
+                                        voluptatum quia fugiat, et blanditiis.
+                                        Mollitia asperiores corporis veniam blanditiis aliquam ea repellendus nesciunt
+                                        itaque nobis sed accusamus
+                                        illo atque qui enim facere temporibus aspernatur, nam, quod optio beatae
+                                        voluptatem nulla. Laborum doloribus ea nobis!
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Accept</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>
-            </div>
+            </section>
+        </div>
+        <div class="row bg-success validation-message d-none">
+            <p class="text-center text-white">Please fill in everything</p>
         </div>
     </main>
 

@@ -1,15 +1,16 @@
+if (process.env.NODE_ENV !== "production") {
+    dotenv.config()
+}
+
 import mongoose from 'mongoose'
 import axios from 'axios'
 import Country from '../models/Country.js';
 import dotenv from 'dotenv'
 
-if (process.env.NODE_ENV !== "production") {
-    dotenv.config()
-}
 
 const MONGO_URI = process.env.MONGO_URI;
 
-const response = await axios.get('https://restcountries.com/v3.1/all?fields=demonyms,idd');
+const response = await axios.get('https://restcountries.com/v3.1/all?fields=name,demonyms,idd');
 const countries = response.data
 
 
@@ -25,8 +26,9 @@ const seedDB = async () => {
     await Country.deleteMany()
 
     for (let c of countries) {
-        const name = c.demonyms.eng.f
+        const demonym = c.demonyms.eng.f
         const callingCode = c.idd.root + c.idd.suffixes
+        const name = c.name.common
 
         if (c.idd.root === '' || c.idd.suffixes.length > 1) {
             continue
@@ -35,7 +37,8 @@ const seedDB = async () => {
         try {
             await Country.create({
                 name,
-                callingCode
+                demonym,
+                callingCode,
             })
         } catch (e) {
             console.log(`Error saving country in database: ${e.message}`)

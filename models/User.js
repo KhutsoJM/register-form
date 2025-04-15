@@ -22,9 +22,21 @@ const userSchema = new Schema({
         type: String,
         // required: true,
     },
+    country: {
+        type: String,
+        reqiured: true,
+    },
+    city: {
+        type: String,
+        required: true,
+    },
     address: {
         type: String,
         required: true,
+    },
+    postalCode: {
+        type: String,
+        reqiured: true,
     },
     callingCode: {
         type: String,
