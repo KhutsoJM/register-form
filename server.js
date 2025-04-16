@@ -13,9 +13,6 @@ import { fileURLToPath } from 'url'
 dotenv.config()
 const app = express()
 
-// VALIDATION
-import Joi from 'joi'
-
 
 // SECURITY
 import helmet from 'helmet'
@@ -55,9 +52,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTES
 app.use('/register', userRoutes)
-
-
-
 
 
 

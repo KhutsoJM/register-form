@@ -56,6 +56,7 @@ export const submitForm = async (req, res) => {
         console.log(user)
         res.status(200).json({success: true, data: user})
     } catch (error) {
-        res.status(500).json({success: false, error: `Error in Submit Form: ${error}`})
+        // res.status(500).json({success: false, error: `Error in Submit Form: ${error}`})
+        res.send('Error 404: Make sure you input all values')
     }
 }
