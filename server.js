@@ -51,7 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // ROUTES
-app.use('/register', userRoutes)
+app.use('/', userRoutes)
 
 
 

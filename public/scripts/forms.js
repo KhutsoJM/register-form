@@ -138,7 +138,7 @@ const updateLearnersEnrolling = (amount) => {
     for (let i = 0; i < amount; i++) {
         content += `
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <div class="mb-3">
                         <div class="form-floating">
                             <input id="name" name="learners[name]" type="text" class="form-control learner-name rounded-0"
@@ -154,7 +154,7 @@ const updateLearnersEnrolling = (amount) => {
                         <label for="surname" class="form-label">Surname</label>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-floating mb-3">
                         <select id="gender" name="learners[gender]" class="form-select learner-gender rounded-0" aria-label="gender">
                             <option selected>M</option>
@@ -283,19 +283,9 @@ const createLearnerSteps = () => {
                 return
             } else {
                 console.log('click register')
-                validationMessage.querySelector('input').value = 'Click Register'
+                // validationMessage.querySelector('input').value = 'Click Register'
+                registerBtn.classList.remove('disabled')
             }
-
-            // if (!validation()) {
-            //     console.log('please input evyerthing')
-            //     return
-            // }
-            // if (learnerFormStepsNum !== learnerFormSteps.length - 1) {
-            //     learnerFormStepsNum++
-            //     updateLearnerFormSteps(learnerFormSteps)
-            // } else {
-            //     console.log('last one')
-            // }
         })
     })
 
