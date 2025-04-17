@@ -55,6 +55,9 @@ app.set('views', path.join(__dirname, 'views'))
 // serve static files (CSS, images, etc)
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/', (req, res) => {
+    res.redirect('/register')
+})
 
 // ROUTES
 app.use('/register', userRoutes)
