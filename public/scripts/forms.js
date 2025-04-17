@@ -80,6 +80,7 @@ const validation = () => {
             input.classList.remove('is-valid');
             valid = false;
         } else {
+            console.log('input is valid')
             input.classList.add('is-valid');
             input.classList.remove('is-invalid');
 
@@ -277,9 +278,9 @@ const createLearnerSteps = () => {
             if (validation() && learnerFormStepsNum !== learnerFormSteps.length - 1) {
                 learnerFormStepsNum++
                 updateLearnerFormSteps(learnerFormSteps)
+                console.log(`Learner ${learnerFormStepsNum}`)
             } else if (!validation()) {
                 console.log(validation())
-                console.log('please input evyerthing')
                 return
             } else {
                 console.log('click register')
@@ -294,6 +295,7 @@ const createLearnerSteps = () => {
             if (learnerFormStepsNum !== 0) {
                 learnerFormStepsNum--;
                 updateLearnerFormSteps(learnerFormSteps)
+                console.log(`Learner ${learnerFormStepsNum}`)
             } else {
                 console.log('first one')
             }
@@ -334,7 +336,7 @@ const updateLearnerFormSteps = (learnerFormSteps) => {
     })
 
     learnerFormSteps[learnerFormStepsNum].classList.add('learner-form-step-active')
-    formStepActive = document.querySelector('.form-step-active')
+    formStepActive = document.querySelector('.learner-form-step-active')
     validateInputs = Array.from(formStepActive.querySelectorAll('input, select')).filter(input => !input.classList.contains('school-input'))
     console.log(validateInputs.length)
 }
