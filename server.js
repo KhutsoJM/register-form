@@ -19,7 +19,7 @@ import helmet from 'helmet'
 
 
 // ENV
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI;
 
 
@@ -38,6 +38,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(helmet())
 app.use((req, res, next) => {
     res.setHeader("Content-Security-Policy", "script-src 'self' https://cdn.jsdelivr.net");
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: ["'self'"],
+            imgSrc: ["'self'", "data"],
+        }
+    })
     next();
 });
 
@@ -51,9 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // ROUTES
-app.use('/', userRoutes)
-
-
+app.use('/register', userRoutes)
 
 
 
@@ -68,4 +72,3 @@ app.listen(PORT, () => {
             console.log(`Error connecting to the database: ${e.message}`)
         })
 })
-

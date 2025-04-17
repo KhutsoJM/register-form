@@ -25,8 +25,6 @@
     <!-- Font Awesome  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-
-
     <link rel="stylesheet" href="styles/style.css">
 
     <title>Registration Page</title>
@@ -44,8 +42,8 @@
             </section>
             <section class="col-md-5 px-5">
                 <form method="POST" action="/register" autocomplete="off" novalidate>
-                    <!-- STEP 1 -->
-                    <div class="form-step form-step-active">
+                    <!-- STEP 1 (PARENT DETAILS) -->
+                    <div class="form-step">
                         <!-- Name -->
                         <div class="input-group mb-3">
                             <div class="form-floating">
@@ -154,8 +152,8 @@
                             <button type="button" class="next-btn btn btn-outline-success px-3 rounded-5">Next</button>
                         </div>
                     </div>
-                    <!-- STEP 2 -->
-                    <div class="form-step">
+                    <!-- STEP 2 (RESIDENCE) -->
+                    <div class="form-step form-step-active">
                         <h4 class="text-center">Residence</h4>
                         <!-- Country -->
                         <div class="form-floating mb-3">
@@ -210,7 +208,7 @@
                             <button type="button" class="next-btn btn btn-outline-success px-3 rounded-5">Next</button>
                         </div>
                     </div>
-                    <!-- STEP 3 -->
+                    <!-- STEP 3 (ENROLLING STUDENTS) -->
                     <div class="form-step">
                         <!-- Enrolling -->
                         <div class="form-floating mb-3">
@@ -318,7 +316,7 @@
                             <button type="button" class="next-btn btn btn-outline-success px-3 rounded-5">Next</button>
                         </div>
                     </div>
-                    <!-- STEP 4 -->
+                    <!-- STEP 4 (LEARNER DETAILS) -->
                     <div class="form-step">
                         <!-- Learner Form Step (Generated) -->
                         <div class="learners-form-steps-container">
@@ -398,14 +396,21 @@
                         <div class="d-flex justify-content-end">
                             <button type="button"
                                 class="back-btn btn btn-outline-primary mx-2 px-3 rounded-5">Back</button>
-                            <button type="button" class="modal-btn btn-outline-success btn px-3 rounded-5 register-btn disabled"
+                            <button type="button"
+                                class="modal-btn btn-outline-success btn px-3 rounded-5 register-btn disabled"
                                 data-bs-toggle="modal" data-bs-target="#disclaimer-modal">Register</button>
                         </div>
                     </div>
+                    <!-- STEP 5 (THANK YOU!) -->
+                    <!-- <div class="form-step form-step-active w-100 h-100">
+                        <div class="container d-flex justify-content-center align-items-center">
+                            <h1>Thank You for Registering!</h1>
+                        </div>
+                    </div> -->
                     <!-- Modal -->
                     <div class="modal fade" id="disclaimer-modal" tabindex="-1" aria-labelledby="modal-title"
                         aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title text-center" id="modal-title">Disclaimer</h4>
@@ -413,17 +418,195 @@
                                         aria-labelledby="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae cumque vel
-                                        nostrum suscipit aspernatur
-                                        dolorem. Exercitationem quasi repellendus laborum, eligendi perferendis corrupti
-                                        animi reprehenderit ducimus
-                                        voluptatum quia fugiat, et blanditiis.
-                                        Mollitia asperiores corporis veniam blanditiis aliquam ea repellendus nesciunt
-                                        itaque nobis sed accusamus
-                                        illo atque qui enim facere temporibus aspernatur, nam, quod optio beatae
-                                        voluptatem nulla. Laborum doloribus ea nobis!
-                                    </p>
+                                    <div class="mb-4">
+                                        <h5 class="text-center mb-2">Payment Terms:</h5>
+                                        <p class="mb-2">
+                                            A sibling discount of 5% applies. Discount applies for those paying for
+                                            term.
+                                            All payments are required in advance.
+                                        <p>
+                                        <p class="mb-2">
+                                            Payment is to be made by way of an Electronic Funds Transfer ("EFT").
+                                            Include a
+                                            cash handling fee of R15 for branch or R9 for ATM cash deposits. Please use
+                                            the
+                                            Initials & Surname of the learner (e.g. M Foster) or the invoice number as
+                                            payment reference.
+                                        </p>
+                                        <p class="mb-2">
+                                            The workshops are generally mobile but venue details will be shared with
+                                            those
+                                            confirmed.
+                                        </p>
+                                        <p class="mb-2">
+                                            Booking is only confirmed as secured once an invoice has been issued and
+                                            payment
+                                            has been made and proof of payment emailed to KIA.
+                                            Access to the learning room would only be allowed for those who have secured
+                                            a
+                                            booking with advanced payment. No cash payment at the venue.
+                                        </p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h6>
+                                            Cancellation:
+                                        </h6>
+                                        <p class="mb-2">
+                                            Refunds are not possible.
+                                        </p>
+                                        <p class="mb-2">
+                                            A full term's notice (school term) is required for cancelations.
+                                            For once-off or convenient bookings: Any cancellations without written
+                                            24-hour
+                                            notice or a no-show will result in both full forfeiture of the payment and a
+                                            rescheduling of the lesson.
+                                        </p>
+                                        <p class="mb-2">
+                                            Billing is applied on a monthly or quarterly basis and no discounts will be
+                                            applied/ provided for the public, or school holidays and for the dates our
+                                            offices are closed. Check dates here for public or school holidays:
+                                            https://www.gov.za/about-sa/public-holidays
+                                        </p>
+                                        <p class="mb-2">
+                                            Should the student skip a month for their enrollment, their booking will be
+                                            passed on to the next student on the waiting list.
+                                        </p>
+
+                                        <p class="mb-2">
+                                            Should KIA be prevented or restricted from carrying out all or any of its
+                                            obligations under this agreement as a result of factors outside its control
+                                            including but not limited to equipment supply shortages and or act of God or
+                                            civil unrest or any other cause or contingency beyond the company's control,
+                                            then KIA shall be relieved of its obligations hereunder during the period
+                                            that
+                                            such event and its consequences continue, but only to the extent so
+                                            prevented
+                                            and shall not be liable for any delay or failure in the performance of any
+                                            obligations hereunder or loss or damages either general, special or
+                                            consequential which the other party may suffer due to or resulting from such
+                                            delay or failure, provided always that written notice shall forthwith be
+                                            given
+                                            of any such inability to perform by the affected Party.
+                                        </p>
+                                        <p class="mb-2">
+                                            Fees are increased annually at a rate of 10% - 15%.
+                                        </p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5 class="text-center">Other:</h5>
+                                        <p class="mb-2">
+                                            The parent/guardian understands that the educational and recreational
+                                            activities
+                                            offered by Kids Innovate Africa may be dangerous with many inherent risks
+                                            and
+                                            hazards (including inter alia small Lego and/or building parts that may
+                                            constitute a choking hazard), and as a consequence, personal injury and
+                                            sometimes death can occur and the parent/guardian assumes and accepts all
+                                            such
+                                            risks on behalf of their child/children and hereby waives the right to sue
+                                            Kids
+                                            Innovate Africa, its employees, directors, partners or associates for any
+                                            personal injury and death suffered by them and/or their child/children in
+                                            any
+                                            way whatsoever caused by or relating to the parent/guardian and/or their
+                                            child/children and/or other participants and/or the participants’
+                                            participation
+                                            in such activities.
+                                        </p>
+                                        <p class="mb-2">
+                                            Parents, guardians, or any representative of the child acknowledge and agree
+                                            that by participating in Kids Innovate Africa’s (KIA) VR-based educational
+                                            activities, they assume full responsibility for the child’s health and
+                                            safety.
+                                            KIA, its owners, directors, staff, associates, and affiliates are not liable
+                                            for
+                                            any injury, discomfort, or unforeseen incidents that may occur during the
+                                            use of
+                                            Virtual Reality equipment or activities.
+                                        </p>
+                                        <p class="mb-2">
+                                            Kids Innovate Africa Limited, its employees, directors, partners or
+                                            associates
+                                            or agents are not liable to the parent/guardian and/or their child/children
+                                            for
+                                            personal injury or death suffered by the parent/guardian and/or child/
+                                            children
+                                            because the educational and recreational activities were not supplied with
+                                            due
+                                            care and skill or were not reasonably fit for their purpose or because of
+                                            negligence, breach of contract, statute or statutory duty by Kids Innovate
+                                            Africa Limited.
+                                        </p>
+                                        <p class="mb-2">
+                                            The parent/guardian agrees to pay the cost of and authorize Kids Innovate
+                                            Africa
+                                            to take all steps reasonably necessary to protect the child's welfare in the
+                                            event of personal injury, including the administration of any emergency
+                                            medical
+                                            treatment and ambulance transportation.
+                                        </p>
+                                        <p class="mb-2">
+                                            By registering for the workshops, I accept that KIA and or its
+                                            representatives
+                                            will photograph and video-record its workshops and the participants
+                                            including
+                                            child(ren). Such photography, videos, and registration information may be
+                                            shared
+                                            to an extent with parents of students after workshops and may also be used
+                                            by
+                                            KIA and its affiliated organizations for marketing and educational purposes,
+                                            including but not limited to the promotion of robotics education,
+                                            inter-school
+                                            robotics competitions, to source funding for future and related events, and
+                                            to
+                                            access business opportunities related to robotics education. I accept that
+                                            such
+                                            information shall be used free of charge, and no financial claim,
+                                            compensation,
+                                            or any claim shall be made or required by myself, child, and or any
+                                            representatives from the KIA and its associates or representatives.
+                                        </p>
+                                        <p class="mb-2">
+                                            Registration information, photography, and videos may be retained for as
+                                            long as
+                                            necessary, regarding relevant laws and regulations, including those relating
+                                            to
+                                            record-keeping and limitation/prescription periods, in South Africa.
+                                            However,
+                                            the parent may submit a request a year after the first enrollment date for
+                                            their
+                                            information to be destroyed. KIA and its affiliated organizations shall not
+                                            be
+                                            liable to any participant or their representatives for any loss or damage
+                                            where
+                                            KIA or its affiliated organizations exercise their right to disclose or
+                                            withhold
+                                            information (including, without limitation, personal data) according to the
+                                            lawful order or otherwise under any applicable laws and regulations of South
+                                            Africa.
+                                        </p>
+                                        <p class="mb-2">
+                                            While Kids Innovate Africa (KIA), its owners, directors, staff, and
+                                            associates
+                                            are happy to assist parents or guardians by having our coaches accompany
+                                            learners from school to the training venue, parents, guardians, or any
+                                            representative of the child agree that KIA and its affiliates are not liable
+                                            for
+                                            any unforeseen incidents that may occur during transit.
+                                            Parents, guardians, or any representative of the child acknowledge that this
+                                            assistance is provided as an optional courtesy and accept full
+                                            responsibility
+                                            for their child’s safety during the walk from school to the training venue,
+                                            releasing KIA, its owners, directors, staff, and associates from any
+                                            liability.
+                                        </p>
+                                        <p class="mb-2">
+                                            We reserve the right to change these terms and conditions at any time. Such
+                                            changes, modifications, additions, or deletions shall be effective
+                                            immediately
+                                            upon notice thereof, which may be given through an email.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary">Accept</button>
