@@ -54,6 +54,7 @@ export const submitForm = async (req, res) => {
             learners: learnerIDs
         })
         console.log(user)
+        res.render('users/thanksMessage')
         // res.status(200).json({ success: true, data: user })
     } catch (error) {
         // res.status(500).json({success: false, error: `Error in Submit Form: ${error}`})
