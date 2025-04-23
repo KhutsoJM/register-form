@@ -80,7 +80,6 @@ const validation = () => {
             input.classList.remove('is-valid');
             valid = false;
         } else {
-            console.log('input is valid')
             input.classList.add('is-valid');
             input.classList.remove('is-invalid');
 
@@ -280,10 +279,8 @@ const createLearnerSteps = () => {
                 updateLearnerFormSteps(learnerFormSteps)
                 console.log(`Learner ${learnerFormStepsNum}`)
             } else if (!validation()) {
-                console.log(validation())
                 return
             } else {
-                console.log('click register')
                 // validationMessage.querySelector('input').value = 'Click Register'
                 registerBtn.classList.remove('disabled')
             }

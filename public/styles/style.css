@@ -1,11 +1,11 @@
 body {
-    /* background: linear-gradient(to bottom, #F0F8FF, #8ef0f0); */
+    background: linear-gradient(90deg, #0096c7, #0077b6);
     /* background: radial-gradient(circle, #48CAE4, #90E0EF, #ADE8F4, #CAF0F8); */
     /* background: radial-gradient(circle, #212529, #343a40); */
     /* background: linear-gradient(to right, #212529, #343a40); */
     /* background-color: #284b63; */
     /* background-color: #212529; */
-    background-color: #dee2e6;
+    /* background-color: #6692bf; */
 
     background-repeat: no-repeat;
     font-family: 'Roboto';
