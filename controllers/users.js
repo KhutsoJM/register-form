@@ -24,7 +24,6 @@ export const submitForm = async (req, res) => {
         postalCode,
         learners,
     } = req.body;
-    console.log(req.body)
 
     async function createLearners() {
         const learnerIDs = []
@@ -53,7 +52,6 @@ export const submitForm = async (req, res) => {
             ...req.body,
             learners: learnerIDs
         })
-        console.log(user)
         res.render('users/thanksMessage')
         // res.status(200).json({ success: true, data: user })
     } catch (error) {
@@ -63,5 +61,6 @@ export const submitForm = async (req, res) => {
 }
 
 export const showUsers = async (req, res) => {
-    res.status(200).render('users/show')
+    const users = await User.find()
+    res.status(200).render('users/show', { users })
 }

@@ -55,7 +55,7 @@ const userSchema = new Schema({
         enum: ['M', 'F', 'Other'],
     },
     enrolling: {
-        type: String,
+        type: Number,
         required: true,
     },
     learners: [{

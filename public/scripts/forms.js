@@ -247,6 +247,24 @@ const createLearnerSteps = () => {
                         <i class="bi bi-geo-alt-fill"></i>
                     </span>
                 </div>
+            
+                <div class="input-group mb-3">
+                    <div class="form-floating">
+                        <select id="course" name="learners[course]" class="form-select rounded-0"
+                            aria-label="course">
+                            <option selected>Select an option</option>
+                            <option>Robotics</option>
+                            <option>Animation</option>
+                            <option>Game Development</option>
+                            <option>Unsure</option>
+                        </select>
+                        <label for="course">Course</label>
+                    </div>
+                    <span class="input-group-text rounded-0" id="school">
+                        <i class="bi bi-geo-alt-fill"></i>
+                    </span>
+                </div>
+
                 <div class="form-floating mb-3">
                     <textarea name="learners[note]" class="form-control rounded-0" placeholder="Notes" id="notes"
                         style="height: 100px; resize: none"></textarea>
