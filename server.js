@@ -55,6 +55,11 @@ app.set('views', path.join(__dirname, 'views'))
 // serve static files (CSS, images, etc)
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+  res.setHeader("X-Frame-Options", "ALLOWALL");
+  next();
+});
+
 app.get('/', (req, res) => {
     res.redirect('/register')
 })
