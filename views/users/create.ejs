@@ -105,10 +105,19 @@
                                 aria-label="Nationality">
                                 <option selected>Select an option</option>
                                 <%for (let country of countries) { %>
-                                    <option>
-                                        <%=country.demonym%>
-                                    </option>
-                                    <% } %>
+                                    <% if (country.demonym==='South African' ) { %>
+                                        <option selected>
+                                            <%= country.demonym %>
+                                        </option>
+                                        <% } else { %>
+                                            <option>
+                                                <%= country.demonym %>
+                                            </option>
+                                            <% } %>
+                                                <option>
+                                                    <%=country.demonym%>
+                                                </option>
+                                                <% } %>
                             </select>
                             <!-- Mobile Version (small select) -->
 
@@ -116,7 +125,7 @@
                         </div>
                         <!-- Calling Code and Number row -->
                         <div class="row mb-3">
-                            <!-- Callinig Code -->
+                            <!-- Calling Code -->
                             <div class="col-4">
                                 <div class="form-floating">
                                     <select id="calling-code" name="callingCode" class="form-select rounded-0"
@@ -165,10 +174,16 @@
                             <select id="country" name="country" class="form-select rounded-0" aria-label="country">
                                 <option selected>Select an option</option>
                                 <%for (let country of countries) { %>
-                                    <option>
-                                        <%=country.name%>
-                                    </option>
-                                    <% } %>
+                                    <% if (country.name==='South Africa' ) { %>
+                                        <option selected>
+                                            <%= country.name %>
+                                        </option>
+                                        <% } else { %>
+                                            <option>
+                                                <%=country.name%>
+                                            </option>
+                                            <% } %>
+                                                <% } %>
                             </select>
                             <label for="country">Country</label>
                         </div>
@@ -191,7 +206,7 @@
                                 <div class="form-floating mb-3">
                                     <input id="postalCode" name="postalCode" type="text" class="form-control rounded-0"
                                         placeholder="postalCode">
-                                    <label for="postalCode" class="form-label">Postal Code</label>
+                                    <label for="postalCode" class="form-label">Postal</label>
                                 </div>
                             </div>
                         </div>

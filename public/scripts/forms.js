@@ -82,7 +82,6 @@ const validation = () => {
         } else {
             input.classList.add('is-valid');
             input.classList.remove('is-invalid');
-
         }
     })
 
@@ -268,7 +267,7 @@ const createLearnerSteps = () => {
                 <div class="form-floating mb-3">
                     <textarea name="learners[note]" class="form-control rounded-0" placeholder="Notes" id="notes"
                         style="height: 100px; resize: none"></textarea>
-                    <label for="notes">Anything to take note of ${learnerDetails[i].name} (Allergies/Conditions/etc)</label>
+                    <label for="notes">Anything to take note of ${learnerDetails[i].name} (Allergies/etc)</label>
                 </div>
                 <div class="d-flex justify-content-center">
                     <button type="button" class="learner-back-btn p-0 mx-2"
