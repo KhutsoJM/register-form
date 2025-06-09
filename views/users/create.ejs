@@ -36,11 +36,13 @@
             <h1 class="text-center fw-bold">KIDS INNOVATE AFRICA</h1>
         </div>
         <div class="row d-flex justify-content-center mb-3">
-            <section class="col-md-5 d-flex justify-content-center">
+            <!-- IMAGE COLUMN -->
+            <section class="d-none d-lg-block col-lg-5 d-flex justify-content-center">
                 <img src="./images/robotics-kids.png" alt="" class="img-fluid circle rounded-circle"
                     style="height: 424px; width: 424px; object-fit: cover;">
             </section>
-            <section class="col-md-5 px-5">
+            <!-- FORM COLUMN -->
+            <section class="col-lg-5 px-md-5">
                 <form method="POST" action="/register" autocomplete="off" novalidate>
                     <!-- STEP 1 (PARENT DETAILS) -->
                     <div class="form-step form-step-active">
@@ -98,7 +100,8 @@
                             </div>
                         </div>
                         <div class="form-floating mb-3">
-                            <select id="nationality" name="nationality" class="form-select rounded-0"
+                            <!-- Mobile Version (small select) -->
+                            <select id="nationality" name="nationality" class="form-select form-select-none rounded-0"
                                 aria-label="Nationality">
                                 <option selected>Select an option</option>
                                 <%for (let country of countries) { %>
@@ -107,6 +110,8 @@
                                     </option>
                                     <% } %>
                             </select>
+                            <!-- Mobile Version (small select) -->
+
                             <label for="nationality">Nationality</label>
                         </div>
                         <!-- Calling Code and Number row -->

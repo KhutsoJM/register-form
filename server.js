@@ -56,7 +56,9 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
+  res.removeHeader("X-Frame-Options"); // just in case
   res.setHeader("X-Frame-Options", "ALLOWALL");
+  res.setHeader("Content-Security-Policy", "frame-ancestors *");
   next();
 });
 
