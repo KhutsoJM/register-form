@@ -24,21 +24,22 @@ export const submitForm = async (req, res) => {
         postalCode,
         learners,
     } = req.body;
+    console.log(`Learner details: ${JSON.stringify(learners)}`)
 
     async function createLearners() {
         const learnerIDs = []
 
         for (let i = 0; i < enrolling; i++) {
             let learnerSchool;
-            learners.school[i] === 'Other' ? learnerSchool = learners.otherSchool[i] : learnerSchool = learners.school[i]
+            learners.school === 'Other' ? learnerSchool = learners.otherSchool : learnerSchool = learners.school
             const learner = await Learner.create({
-                name: learners.name[i],
-                surname: learners.surname[i],
-                gender: learners.gender[i],
-                birthdate: learners.birthdate[i],
+                name: learners.name,
+                surname: learners.surname,
+                gender: learners.gender,
+                birthdate: learners.birthdate,
                 school: learnerSchool,
-                venue: learners.venue[i],
-                note: learners.note[i],
+                venue: learners.venue,
+                note: learners.note,
             })
 
             learnerIDs.push(learner._id)
