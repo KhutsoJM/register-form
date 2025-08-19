@@ -24,12 +24,12 @@ export const submitForm = async (req, res) => {
         postalCode,
         learners,
     } = req.body;
-    console.log(`Learner details: ${JSON.stringify(learners)}`)
-
+    console.log(enrolling);
     async function createLearners() {
         const learnerIDs = []
 
-        for (let i = 0; i < enrolling; i++) {
+        if (enrolling == 1) {
+            console.log("enrolling one")
             let learnerSchool;
             learners.school === 'Other' ? learnerSchool = learners.otherSchool : learnerSchool = learners.school
             const learner = await Learner.create({
@@ -41,23 +41,41 @@ export const submitForm = async (req, res) => {
                 venue: learners.venue,
                 note: learners.note,
             })
-
+            console.log(learners.name, learners.venue)
             learnerIDs.push(learner._id)
+        } else {
+            console.log("enrolling more than one")
+            for (let i = 0; i < enrolling; i++) {
+                let learnerSchool;
+                learners.school[i] === 'Other' ? learnerSchool = learners.otherSchool[i] : learnerSchool = learners.school[i]
+                const learner = await Learner.create({
+                    name: learners.name[i],
+                    surname: learners.surname[i],
+                    gender: learners.gender[i],
+                    birthdate: learners.birthdate[i],
+                    school: learnerSchool,
+                    venue: learners.venue[i],
+                    note: learners.note[i],
+                })
+
+                learnerIDs.push(learner._id)
+            }
         }
+
         return learnerIDs
     }
 
     try {
         const learnerIDs = await createLearners()
-        const user = await User.create({
+        await User.create({
             ...req.body,
             learners: learnerIDs
         })
         res.render('users/thanksMessage')
         // res.status(200).json({ success: true, data: user })
     } catch (error) {
-        // res.status(500).json({success: false, error: `Error in Submit Form: ${error}`})
-        res.send('Error 404: Make sure you input all values')
+        res.status(500).json({ success: false, error: `Error in Submit Form: ${error}` })
+        // res.send('Error 404: Make sure you input all values')
     }
 }
 
