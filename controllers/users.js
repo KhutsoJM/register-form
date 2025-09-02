@@ -9,7 +9,6 @@ export const getForm = async (req, res) => {
 }
 
 export const submitForm = async (req, res) => {
-
     const {
         name,
         surname,
@@ -24,6 +23,7 @@ export const submitForm = async (req, res) => {
         postalCode,
         learners,
     } = req.body;
+
     console.log(enrolling);
     async function createLearners() {
         const learnerIDs = []
@@ -80,6 +80,18 @@ export const submitForm = async (req, res) => {
 }
 
 export const showUsers = async (req, res) => {
-    const users = await User.find()
-    res.status(200).render('users/show', { users })
+    const users = await User.find({ archived: false });
+    res.status(200).render('users/show', { users });
+}
+
+export const deleteUser = async (req, res) => {
+    const { id } = req.params;
+    const user = await User.findById(id);
+
+    if (user.archived === false) {
+        user.archived = true;
+        await user.save();
+    }
+
+    res.status(200).json({ success: true, message: 'User deleted' });
 }

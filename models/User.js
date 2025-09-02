@@ -61,7 +61,11 @@ const userSchema = new Schema({
     learners: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Learner',
-    }]
+    }],
+    archived: {
+        type: Boolean,
+        default: false,
+    }
 
 }, { timestamps: true })
 

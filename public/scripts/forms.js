@@ -1,42 +1,48 @@
-// ELEMENTS
+// const image1 = document.querySelector('.image-1');
+// const image2 = document.querySelector('.image-2');
+
+// image2.style.display = 'block';
+
+const images = document.querySelectorAll('.display-image');
+images[0].style.display = 'block';
 
 // prevent form from submitting after pressing enter
 const form = document.querySelector('form')
 form.addEventListener('keydown', e => {
     if (e.key === 'Enter') {
-        e.preventDefault()
-        console.log('enter pressed')
+        e.preventDefault();
+        console.log('enter pressed');
     }
 })
 
-const registerBtn = document.querySelector('.register-btn')
+const registerBtn = document.querySelector('.register-btn');
 
 // Form steps
-let formSteps = document.querySelectorAll('.form-step')
-const nextBtns = document.querySelectorAll('.next-btn')
-const backBtns = document.querySelectorAll('.back-btn')
+let formSteps = document.querySelectorAll('.form-step');
+const nextBtns = document.querySelectorAll('.next-btn');
+const backBtns = document.querySelectorAll('.back-btn');
 let formStepsNum = 0
 
 // Enrolling inputs
-const enrollingSelect = document.querySelector('.enrolling-select')
-const enrollingInputsContainer = document.querySelector('.enrolling-inputs-container')
+const enrollingSelect = document.querySelector('.enrolling-select');
+const enrollingInputsContainer = document.querySelector('.enrolling-inputs-container');
 
 // Learner form steps
-const learnerFormStepsContainer = document.querySelector('.learners-form-steps-container')
+const learnerFormStepsContainer = document.querySelector('.learners-form-steps-container');
 let learnerFormStepsNum = 0
 let schoolSelectNum = 0;
 
 // Form validation
-let formStepActive = document.querySelector('.form-step-active')
-let validateInputs = formStepActive.querySelectorAll('input, select')
+let formStepActive = document.querySelector('.form-step-active');
+let validateInputs = formStepActive.querySelectorAll('input, select');
 
 // Modal
-const modalBtn = document.querySelector('.modal-btn')
+const modalBtn = document.querySelector('.modal-btn');
 
-const validationMessage = document.querySelector('.validation-message')
+const validationMessage = document.querySelector('.validation-message');
 
 
-const datepicker = document.querySelector('.datepicker')
+const datepicker = document.querySelector('.datepicker');
 flatpickr(datepicker, {
     dateFormat: "Y-m-d", // Custom format
     // minDate: "today", // Prevent past dates
@@ -49,12 +55,13 @@ nextBtns.forEach(btn => {
     btn.addEventListener('click', e => {
         if (validation()) {
             formStepsNum++;
-            updateFormSteps()
+            updateFormSteps();
+            // updateImages(formStepsNum);
         }
 
         if (formStepsNum === 3) {
             learnerFormStepsNum = 0;
-            createLearnerSteps()
+            createLearnerSteps();
         }
     })
 })
@@ -65,8 +72,8 @@ nextBtns.forEach(btn => {
 backBtns.forEach(btn => {
     btn.addEventListener('click', e => {
         formStepsNum--;
-        updateFormSteps()
-        validationMessage.classList.add('d-none')
+        updateFormSteps();
+        validationMessage.classList.add('d-none');
     })
 })
 
@@ -86,15 +93,15 @@ const validation = () => {
     })
 
     valid ? validationMessage.classList.add('d-none') : validationMessageDisplay()
-    return valid
+    return valid;
 }
 
 const validationMessageDisplay = () => {
-    validationMessage.classList.remove('d-none')
+    validationMessage.classList.remove('d-none');
     validationMessage.style.opacity = 1;
 
     setTimeout(() => {
-        fadeOut(validationMessage, 2000)
+        fadeOut(validationMessage, 2000);
     }, 6000);
 }
 
@@ -129,6 +136,17 @@ const updateFormSteps = () => {
 
     formStepActive = document.querySelector('.form-step-active')
     validateInputs = formStepActive.querySelectorAll('input, select')
+}
+
+const updateImages = (num) => {
+    num -= 1;
+    console.log('image: ', images[num]);
+    images[num].style.display = 'block';
+    images.forEach((img, idx) => {
+        if (idx !== num) {
+            img.style.display = 'none';
+        }
+    });
 }
 
 const updateLearnersEnrolling = (amount) => {

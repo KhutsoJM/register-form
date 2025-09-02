@@ -1,10 +1,12 @@
+
 const raw = document.getElementById('user-data').textContent;
 const users = JSON.parse(raw);
 
-console.log(users)
+console.log(users);
 
-const userSelectBtns = document.querySelectorAll('.btn-link')
-const modalContainer = document.querySelector('.modal-container')
+const userSelectBtns = document.querySelectorAll('.btn-link');
+const modalContainer = document.querySelector('.modal-container');
+const deleteBtns = document.querySelectorAll('.delete-btn');
 
 let selectedUser
 
@@ -21,9 +23,25 @@ userSelectBtns.forEach(btn => {
     })
 });
 
+deleteBtns.forEach(btn => {
+    btn.addEventListener('click', async e => {
+        const id = btn.dataset.id;
+        console.log(`arhiving user with id: ${id}...`);
+        axios.delete(`/register/admin/${id}`)
+            .then((data) => {
+                console.log(data);
+                console.log('user archived, reloading page...');
+                window.location.reload();
+            })
+            .catch((error) => {
+                console.log(`Error: ${error.message}`);
+                console.log('failed to archive user with id:', id);
+            })
+    })
+})
+
 const createUserModal = async () => {
-    const content = 
-    `
+    const content = `
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
@@ -72,6 +90,5 @@ const createUserModal = async () => {
         </div>
     `
 
-    modalContainer.innerHTML = content
-    
+    modalContainer.innerHTML = content;
 }

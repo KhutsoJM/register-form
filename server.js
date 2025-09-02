@@ -28,7 +28,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 
-
 // ROUTERS
 import userRoutes from './routes/users.js';
 
@@ -49,9 +48,9 @@ app.use((req, res, next) => {
 
 
 // set ejs as the templating engine
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
 // set the views directory
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'views'));
 // serve static files (CSS, images, etc)
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -63,15 +62,14 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    res.redirect('/register')
+    res.redirect('/register');
 })
 
 // ROUTES
-app.use('/register', userRoutes)
+app.use('/register', userRoutes);
 
 
-
-
+// START SERVER & CONNECT TO DB
 app.listen(PORT, () => {
     console.log(`Listening on Port ${PORT}`)
     mongoose.connect(MONGO_URI)
