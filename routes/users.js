@@ -6,13 +6,16 @@ import {
     getForm,
     submitForm,
     showUsers,
-    deleteUser
-} from '../controllers/users.js'
+    getArchivedUsers,
+    deleteUser,
+    getLearners,
+} from '../controllers/users.js';
 
-router.get('/', getForm)
-router.post('/', submitForm)
-router.get('/admin', showUsers)
-router.delete('/admin/:id', deleteUser)
+router.get('/', getForm);
+router.post('/', submitForm);
+router.get('/admin', showUsers);
+router.delete('/admin/:id', deleteUser);
+router.get('/admin/archived', getArchivedUsers);
+router.get('/admin/learners', getLearners);
 
-
-export default router
+export default router;

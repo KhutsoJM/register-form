@@ -88,10 +88,44 @@ export const deleteUser = async (req, res) => {
     const { id } = req.params;
     const user = await User.findById(id);
 
+    const learnerIds = user.learners;
+    console.log(`Learner IDs: ${learnerIds}`);
+
     if (user.archived === false) {
         user.archived = true;
         await user.save();
-    }
+        console.log(`User with id: ${id} archived.`);
+        res.status(200).json({ success: true, message: 'User archived' });
+    } else if (user.archived === true) {
+        console.log(`User with id: ${id} is already archived. Deleting permanently...`);
+        User.findByIdAndDelete(id)
+            .then(() => res.status(200).json({ success: true, message: 'User permanently deleted' }))
+            .catch((error) => res.status(500).json({ success: false, error: `Error in Delete User: ${error}` }));
 
-    res.status(200).json({ success: true, message: 'User deleted' });
+        learnerIds.forEach(id => {
+            Learner.findByIdAndDelete(id)
+                .then(() => console.log(`Learner with id: ${id} permanently deleted`))
+                .catch((error) => console.log(`Error in Delete Learner: ${error}`));
+        });
+    }
+}
+
+// export const deleteUser = async (req, res) => {
+//     const { id } = req.params;
+//     User.findByIdAndDelete(id, { archive: true })
+//         .then(() => res.status(200).json({ success: true, message: 'User permanently deleted' }))
+//         .catch((error) => res.status(500).json({ success: false, error: `Error in Delete User: ${error}` }));
+// }
+
+export const getArchivedUsers = async (req, res) => {
+    const users = await User.find({ archived: true });
+    // console.log(`Archived users found: ${users === !null ? users : 0}`);
+    console.log(`\nArchived users found: ${users ? users.length : 0}`);
+
+    res.status(200).render('users/archived', { users });
+}
+
+export const getLearners = async (req, res) => {
+    const learners = await Learner.find();
+    res.render('users/learners', { learners });
 }
